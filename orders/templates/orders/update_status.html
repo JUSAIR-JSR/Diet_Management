@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Update Order Status</h1>
+<p>Order ID: {{ order.id }}</p>
+<p>Current Status: {{ order.status }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="status">New Status:</label>
+    <select name="status" id="status">
+        <option value="pending">Pending</option>
+        <option value="processing">Processing</option>
+        <option value="shipped">Shipped</option>
+        <option value="delivered">Delivered</option>
+        <option value="cancelled">Cancelled</option>
+    </select>
+    <button type="submit">Update Status</button>
+</form>
+
+<a href="{% url 'shop_orders' %}">Back to Orders</a>
+{% endblock %}
